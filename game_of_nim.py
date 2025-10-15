@@ -62,6 +62,24 @@ class GameOfNim(Game):
                     self.display(state)
                     return self.utility(state, self.to_move(self.initial))
 
+def query_player(game, state):
+    """Make a move by querying standard input."""
+    # Function override to match sample output
+    print("current state:", end=' ')
+    game.display(state)
+    print("available moves: {}".format(game.actions(state)))
+    print("")
+    move = None
+    if game.actions(state):
+        move_string = input('Your move? ')
+        try:
+            move = eval(move_string)
+        except NameError:
+            move = move_string
+    else:
+        print('no legal moves: passing turn to next player')
+    return move
+
 if __name__ == "__main__":
     nim = GameOfNim(board=[0, 5, 3, 1]) # Creating the game instance
     #nim = GameOfNim(board=[7, 5, 3, 1]) # a much larger tree to search
@@ -74,6 +92,7 @@ if __name__ == "__main__":
         print("MIN won the game")
     else:
         print("MAX won the game")
+
 
 
 
