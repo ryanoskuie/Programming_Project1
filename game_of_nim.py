@@ -55,8 +55,7 @@ class GameOfNim(Game):
         while True:
             for player in players:
                 move = player(self, state)
-                if player == alpha_beta_player:
-                    print(move)
+                print(move)
                 state = self.result(state, move)
                 self.display(state)
                 if self.terminal_test(state):
@@ -75,5 +74,6 @@ if __name__ == "__main__":
         print("MIN won the game")
     else:
         print("MAX won the game")
+
 
 
