@@ -19,7 +19,7 @@ class GameOfNim(Game):
 
     def result(self, state, move):
         board = state.board.copy()
-        board[move[0]] = board[move[0]] - move[0]
+        board[move[0]] = board[move[0]] - move[1]
         newMoves = list([(x, y) for x in range(0, len(board))
                      for y in range(1, board[x] + 1)])
         return GameState(to_move=('MIN' if state.to_move == 'MAX' else 'MAX'),
