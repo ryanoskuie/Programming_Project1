@@ -46,6 +46,21 @@ class GameOfNim(Game):
         """Return the player whose move it is in this state."""
         return state.to_move
 
+    def play_game(self, *players):
+        """Play an n-person, move-alternating game."""
+        state = self.initial
+        self.display(state)
+        while True:
+            for player in players:
+                move = player(self, state)
+                if player == alpha_beta_player:
+                    print(move)
+                state = self.result(state, move)
+                self.display(state)
+                if self.terminal_test(state):
+                    self.display(state)
+                    return self.utility(state, self.to_move(self.initial))
+
 if __name__ == "__main__":
     nim = GameOfNim(board=[0, 5, 3, 1]) # Creating the game instance
     #nim = GameOfNim(board=[7, 5, 3, 1]) # a much larger tree to search
@@ -58,3 +73,4 @@ if __name__ == "__main__":
         print("MIN won the game")
     else:
         print("MAX won the game")
+
