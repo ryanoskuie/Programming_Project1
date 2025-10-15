@@ -1,3 +1,5 @@
+# CPSC 481 - Project 1
+# Members: Ryan Oskuie, Dylan Tran
 from games import *
 
 class GameOfNim(Game):
@@ -73,4 +75,5 @@ if __name__ == "__main__":
         print("MIN won the game")
     else:
         print("MAX won the game")
+
 
